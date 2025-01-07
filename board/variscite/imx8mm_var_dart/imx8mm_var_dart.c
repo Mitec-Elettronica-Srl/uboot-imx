@@ -264,10 +264,6 @@ int board_late_init(void)
 
 	if (id == VAR_SOM_MX8M_MINI) {
 		env_set("board_name", "VAR-SOM-MX8M-MINI");
-		if (get_som_rev() == SOM_REV10)
-			env_set("som_rev", "som_rev10");
-		else
-			env_set("som_rev", "som_rev11");
 	}
 	else if (id == DART_MX8M_MINI)
 		env_set("board_name", "DART-MX8M-MINI");

@@ -147,11 +147,13 @@
 	"findfdt=" \
 		"if test $fdt_file = undefined; then " \
 			"if test $board_name = VAR-SOM-MX8M-MINI; then " \
-				"if test $som_rev = som_rev10; then " \
+				"if test $som_rev = 1.0; then " \
 					"setenv fdt_file imx8mm-var-som-rev10.dtb; " \
+				"elif test ${som_rev} -lt 2; then " \
+					"setenv fdt_file imx8mm-var-som-1.x.dtb; " \
 				"else " \
 					"setenv fdt_file imx8mm-var-som.dtb; " \
-				"fi;" \
+				"fi; " \
 			"else " \
 				"if test ${som_rev} -lt 2; then " \
 					"setenv fdt_file imx8mm-var-dart-1.x.dtb; " \
