@@ -637,11 +637,18 @@ static int boot_from_devices(struct spl_image_info *spl_image,
 			}
 			if (loader &&
 				!spl_load_image(spl_image, loader)) {
+					printf("Image loaded from spl at 0x%x\n",
+						spl_image);
 				spl_image->boot_device = bootdev;
 				return 0;
+			} else {
+				printf("Error loading image from %s\n",
+					spl_loader_name(loader));
 			}
 		}
 	}
+
+	printf("Error loading image: %d\n", ret);
 
 	return ret;
 }
